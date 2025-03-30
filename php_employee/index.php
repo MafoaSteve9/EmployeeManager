@@ -1,5 +1,6 @@
 <?php
 
+ // Ajoute les informations d'un employé dans un fichier texte
  function getInfos($nom, $prenom, $mail, $num) {
     $handle = fopen("employee.txt", "a");
     if ($handle) {
