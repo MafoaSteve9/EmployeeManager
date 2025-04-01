@@ -17,7 +17,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     }
 
     // Vérifier si l'utilisateur a été trouvé
-    if (!$utilisateur) {
+    if (!$employe) {
         die("Utilisateur non trouvé !");
     }
 }
