@@ -2,6 +2,24 @@
 
 include("ajouter.php");
 
+
+if (isset($_GET['delete_id'])) {
+    $idToDelete = trim($_GET['delete_id']);
+
+    // Lire le fichier et supprimer la ligne correspondante
+    $fichier = file("employee.txt", FILE_IGNORE_NEW_LINES);
+    $nouveauFichier = array_filter($fichier, function ($ligne) use ($idToDelete) {
+        return explode("|", $ligne)[0] != $idToDelete;
+    });
+
+    // Sauvegarde du fichier mis à jour
+    file_put_contents("employee.txt", implode(PHP_EOL, $nouveauFichier) . PHP_EOL);
+
+    // Message de confirmation
+    echo "<p>Employé supprimé avec succès !</p>";
+}
+
+
 $message = "";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,8 +51,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <form method="post" action="">
-        <label for="nom">ID :</label>
-        <!-- <input type="text" name="id" id="id" required> -->
+        <!-- <label for="nom">ID :</label>
+        <input type="text" name="id" id="id" required> -->
         <label for="nom">Nom :</label>
         <input type="text" name="nom" id="nom" required>
         <label for="prenom">Prenom :</label>
@@ -81,10 +99,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "<td>" . htmlspecialchars($donnees[4]) . "</td>";
                 echo "<td>
                             <a href='modifier.php?id={$donnees[0]}'><button>Modifier</button></a>
-                            <a href='supprimer.php?id={$donnees[0]}'><button>Supprimer</button></a>
-
-                        </td>";
+                            <a href='index.php?delete_id={$donnees[0]}'><button>Supprimer</button></a>
+                      </td>";
                 echo "</tr>";
+            
             }
         }
         ?>
