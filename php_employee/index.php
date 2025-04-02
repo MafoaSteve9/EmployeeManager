@@ -5,6 +5,7 @@ include("ajouter.php");
 
 if (isset($_GET['delete_id'])) {
     $idToDelete = trim($_GET['delete_id']);
+    var_dump($idToDelete);
 
     // Lire le fichier et supprimer la ligne correspondante
     $fichier = file("employee.txt", FILE_IGNORE_NEW_LINES);
@@ -93,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "<td>" . htmlspecialchars($donnees[4]) . "</td>";
                 echo "<td>
                 <a href='modifier.php?id={$donnees[0]}'><button>Modifier</button></a>
-                <a href='index.php?id={$donnees[0]}'><button>Supprimer</button></a>
+                <a href='index.php?delete_id={$donnees[0]}'><button>Supprimer</button></a>
                 
                 </td>";
                 echo "</tr>";
