@@ -46,6 +46,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p><?php echo htmlspecialchars($message); ?></p>
     </form>
     
+
+    <form action="post">
+        <label for="search">Barre de recherche</label>
+        <input type="text" name="search" id="search">
+        <button type="submit">rechercher</button>
+    </form>
     
     <table border="1" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <thead style="background-color: antiquewhite;">
