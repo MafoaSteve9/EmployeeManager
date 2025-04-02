@@ -23,7 +23,6 @@ if (isset($_GET['delete_id'])) {
 $message = "";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // $id = isset($_POST["id"]) ? trim($_POST["id"]) : "";
     $nom = isset($_POST['nom']) ? trim($_POST['nom']) : "";
     $prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : "";
     $mail = isset($_POST['mail']) ? trim($_POST['mail']) : "";
