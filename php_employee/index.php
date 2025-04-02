@@ -5,7 +5,7 @@ include("ajouter.php");
 $message = "";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = isset($_POST["id"]) ? trim($_POST["id"]) : "";
+    // $id = isset($_POST["id"]) ? trim($_POST["id"]) : "";
     $nom = isset($_POST['nom']) ? trim($_POST['nom']) : "";
     $prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : "";
     $mail = isset($_POST['mail']) ? trim($_POST['mail']) : "";
@@ -13,8 +13,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     // Vérification des champs obligatoires
-    if (!empty($id) && !empty($nom) && !empty($prenom) && !empty($mail) && !empty($num)) {
-        getInfos($id, $nom, $prenom, $mail, $num);
+    if (!empty($nom) && !empty($prenom) && !empty($mail) && !empty($num)) {
+        getInfos($nom, $prenom, $mail, $num);
         $message = "Les informations ont été enregistrées avec succès.";
     } else {
         $message = "Veuillez remplir tous les champs.";
@@ -33,8 +33,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <form method="post" action="">
-        <label for="nom">ID :</label>
-        <input type="text" name="id" id="id" required>
         <label for="nom">Nom :</label>
         <input type="text" name="nom" id="nom" required>
         <label for="prenom">Prenom :</label>
@@ -81,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "<td>" . htmlspecialchars($donnees[4]) . "</td>";
                 echo "<td>
                             <a href='modifier.php?id={$donnees[0]}'><button>Modifier</button></a>
-                            <a href='supprimer.php?id={$donnees[0]}'><button>Supprimer</button></a>
+                            <a href='index.php?id={$donnees[0]}'><button>Supprimer</button></a>
 
                         </td>";
                 echo "</tr>";
